@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+- docker
+
+script:
+- >
+- docker build -t wise2c/kube-controller-manager-amd64-ceph:$TRAVIS_BRANCH .
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+- docker push wise2c/kube-controller-manager-amd64-ceph:$TRAVIS_BRANCH
